@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.build.json",
+
+  "compilerOptions": {
+    "baseUrl": "./packages",
+    "paths": {
+      "@biohackathon-sk-2021-dream-team/shared": ["shared/src"],
+      "@biohackathon-sk-2021-dream-team/web": ["web/src"],
+      "@biohackathon-sk-2021-dream-team/*": ["*/src"]
+    },
+    "strict": true
+  }
+}
