@@ -70,10 +70,9 @@ jobs:
           aws-region: eu-central-1
 
       - name: Deploy to S3 Bucket
-        run: aws s3 sync ./ s3://biohackathon2021dreamteam.sk --acl public-read --delete
+        run: aws s3 sync ./ s3://omnibio.me --acl public-read --delete
 
-      # TODO
-      # - name: Invalidate Cloudfront CDN
-      #   run: aws cloudfront create-invalidation --distribution-id=$CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
-      #   env:
-      #     CLOUDFRONT_DISTRIBUTION_ID: E36OZZ9WTFU0V1
+      - name: Invalidate Cloudfront CDN
+        run: aws cloudfront create-invalidation --distribution-id=$CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
+        env:
+          CLOUDFRONT_DISTRIBUTION_ID: E2MSX26SRMCGBN
