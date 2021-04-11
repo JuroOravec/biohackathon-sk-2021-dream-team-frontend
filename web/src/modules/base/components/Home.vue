@@ -1,11 +1,11 @@
 <template>
-  <div class="About">
+  <div class="Home">
     <v-img src="../assets/bg-banner-1.png" contain />
 
-    <v-row class="About__cards">
+    <v-row class="Home__cards">
       <v-col>
         <router-link :to="{ name: DashboardRoute.ROOT }">
-          <Card>
+          <Card class="mx-auto">
             <v-img
               src="../assets/microbiome-gut-1.png"
               contain
@@ -17,8 +17,8 @@
         </router-link>
       </v-col>
       <v-col>
-        <router-link :to="{ name: DashboardRoute.ROOT }">
-          <Card>
+        <router-link :to="{ name: BaseRoute.ROOT }">
+          <Card class="mx-auto">
             <v-img
               src="../assets/microbiome-skin-1.png"
               contain
@@ -31,7 +31,7 @@
       </v-col>
       <v-col>
         <router-link :to="{ name: DashboardRoute.ROOT }">
-          <Card>
+          <Card class="mx-auto">
             <v-img
               src="../assets/microbiome-oral-1.png"
               contain
@@ -44,7 +44,7 @@
       </v-col>
       <v-col>
         <router-link :to="{ name: DashboardRoute.ROOT }">
-          <Card>
+          <Card class="mx-auto">
             <v-img
               src="../assets/microbiome-vaginal-1.png"
               contain
@@ -73,9 +73,10 @@ import { defineComponent } from '@vue/composition-api';
 import LightboxImg from '@/modules/utils/components/LightboxImg.vue';
 import Card from './Card.vue';
 import { DashboardRoute } from '../../dashboard/types';
+import { BaseRoute } from '../types';
 
-const About = defineComponent({
-  name: 'About',
+const Home = defineComponent({
+  name: 'Home',
   components: {
     LightboxImg,
     Card,
@@ -83,22 +84,24 @@ const About = defineComponent({
   setup() {
     return {
       DashboardRoute,
+      BaseRoute,
     };
   },
 });
 
-export default About;
+export default Home;
 </script>
 
 <style lang="scss">
 @import 'vuetify/src/styles/styles';
-.About {
+.Home {
   &__cards {
     padding-top: 100px;
     padding-bottom: 100px;
   }
 
   .Card {
+    width: 200px;
     height: 200px;
   }
 
