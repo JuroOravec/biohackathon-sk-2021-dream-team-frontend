@@ -1,17 +1,5 @@
 <template>
-  <v-row class="ProfileFormSave" justify="space-around" justify-sm="start">
-    <v-col cols="auto" :class="{ 'px-2': $vuetify.breakpoint.smAndDown }">
-      <v-btn color="primary" v-bind="submitBtnAttrs" @click="$emit('submit')">
-        <v-progress-circular
-          v-if="submitIsLoading"
-          class="mr-2"
-          indeterminate
-          :size="24"
-          color="primary"
-        />
-        <slot name="submit-action"> Save changes </slot>
-      </v-btn>
-    </v-col>
+  <v-row class="ProfileFormSave" justify="space-around" justify-sm="end">
     <v-col cols="auto" :class="{ 'px-2': $vuetify.breakpoint.smAndDown }">
       <v-btn color="primary" outlined v-bind="discardBtnAttrs" @click="$emit('discard')">
         <v-progress-circular
@@ -24,6 +12,19 @@
         <slot name="discard-action">Discard changes </slot>
       </v-btn>
     </v-col>
+    <v-col cols="auto" :class="{ 'px-2': $vuetify.breakpoint.smAndDown }">
+      <v-btn color="primary" v-bind="submitBtnAttrs" @click="$emit('submit')">
+        <v-progress-circular
+          v-if="submitIsLoading"
+          class="mr-2"
+          indeterminate
+          :size="24"
+          color="primary"
+        />
+        <slot name="submit-action"> Save changes </slot>
+      </v-btn>
+    </v-col>
+
   </v-row>
 </template>
 

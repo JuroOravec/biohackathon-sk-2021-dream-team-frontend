@@ -1,5 +1,7 @@
 export enum DashboardRoute {
-  PLAYLISTS = 'dashboard:account',
+  ACCOUNT = 'dashboard:account',
+  CREATE_REPORT = 'dashboard:create-report',
+  REPORT = 'dashboard:report',
   UNKNOWN = 'dashboard:unknown',
   ROOT = 'dashboard:root',
 }

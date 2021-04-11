@@ -1,23 +1,35 @@
 import type { RouteConfig } from 'vue-router';
 
-import DashboardPlaylists from './components/DashboardPlaylists.vue';
+import DashboardIntegrations from './components/ProfileIntegrations.vue';
+import DashboardAccount from './components/ProfileAccount.vue';
+import DashboardPreferences from './components/ProfilePreferences.vue';
 import { DashboardRoute } from './types';
 
 const createRoutes = (): (RouteConfig & { name: DashboardRoute })[] => [
   {
-    name: DashboardRoute.PLAYLISTS,
-    path: '/playlists',
-    component: DashboardPlaylists,
+    name: DashboardRoute.ACCOUNT,
+    path: '/account',
+    component: DashboardAccount,
+  },
+  {
+    name: DashboardRoute.CREATE_REPORT,
+    path: '/mikrobiom',
+    component: DashboardPreferences,
+  },
+  {
+    name: DashboardRoute.REPORT,
+    path: '/mikrobiom-report',
+    component: DashboardIntegrations,
   },
   {
     name: DashboardRoute.UNKNOWN,
     path: '/*',
-    redirect: { name: DashboardRoute.PLAYLISTS },
+    redirect: { name: DashboardRoute.CREATE_REPORT },
   },
   {
     name: DashboardRoute.ROOT,
     path: '',
-    redirect: { name: DashboardRoute.PLAYLISTS },
+    redirect: { name: DashboardRoute.CREATE_REPORT },
   },
 ];
 

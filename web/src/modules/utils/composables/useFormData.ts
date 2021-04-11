@@ -6,6 +6,7 @@ import isEqual from 'lodash/isEqual';
 import mapValues from 'lodash/mapValues';
 
 import type OptionalRef from '@/modules/utils-reactivity/types/OptionalRef';
+import { cloneDeep } from 'lodash';
 
 interface UseFormData<
   /* eslint-disable @typescript-eslint/ban-types */
@@ -92,11 +93,12 @@ const useFormData = <
 
   const resetFormData = (keysToReset?: (keyof T)[]): void => {
     const formKeys = keysToReset ?? (Object.keys(unref(formData)) as (keyof T)[]);
+    const defaultsCopy = cloneDeep(unref(defaultsRef));
 
     const overrides = reduce(
       formKeys,
       (agg, key) => {
-        agg[key] = unref(defaultsRef)?.[key] ?? undefined;
+        agg[key] = defaultsCopy?.[key] ?? undefined;
         return agg;
       },
       {} as Partial<T>

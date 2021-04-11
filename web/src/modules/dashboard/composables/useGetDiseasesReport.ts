@@ -1,9 +1,15 @@
-import { inject, Ref, ref } from '@vue/composition-api';
+import { inject, isRef, Ref, ref, computed, watch } from '@vue/composition-api';
 
 import { ConfigKey } from '@/plugins/config';
 import type { EnvironmentConfig } from '@/plugins/config/config';
 import type { Disease } from './useGetDiseases';
 import type { Organism } from './useGetOrganisms';
+import OptionalRef from '@/modules/utils-reactivity/types/OptionalRef';
+
+export enum Abundance {
+  ELEVATED = 'Elevated',
+  REDUCED = 'Reduced',
+}
 
 interface Publication {
   outlet: string;
@@ -12,11 +18,11 @@ interface Publication {
   url: string;
 }
 
-interface DiseasesReportInputOrganism extends Pick<Organism, 'id'> {
-  abundance: 'Elevated' | 'Reduced';
+export interface DiseasesReportInputOrganism extends Pick<Organism, 'id'> {
+  abundance: Abundance;
 }
 
-interface DiseasesReportInput {
+export interface DiseasesReportInput {
   items: DiseasesReportInputOrganism[]
 }
 
@@ -45,18 +51,24 @@ interface UseGetDiseasesReport {
   error: Ref<Error | null>;
 }
 
-const useGetDiseasesReport = (reportedOrganisms: DiseasesReportInputOrganism[]): UseGetDiseasesReport => {
+const useGetDiseasesReport = (reportedOrganisms: OptionalRef<DiseasesReportInputOrganism[]>): UseGetDiseasesReport => {
   const config = inject<EnvironmentConfig>(ConfigKey);
+  const reportedOrganismsRef = isRef(reportedOrganisms) ? reportedOrganisms : ref(reportedOrganisms);
 
   const diseaseReports: Ref<DiseaseReport[]> = ref([]);
   const error: Ref<null | Error> = ref(null);
   const loading: Ref<boolean> = ref(true);
+  const input: Ref<DiseasesReportInput> = ref({ items: [] });
 
-  const input: DiseasesReportInput = {
-    items: reportedOrganisms,
-  };
-
-  fetch(`${config!.BACKEND_URL}/organisms`, { method: 'POST', body: JSON.stringify(input ?? {}) })
+  const fetchReports = () => {
+    fetch(`${config!.BACKEND_URL}/organisms`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(input.value ?? {}),
+    })
     .then((response) => response.json())
     .then((data: DiseaseReportResponse) => {
       diseaseReports.value = data.items.map((report): DiseaseReport => ({
@@ -72,7 +84,15 @@ const useGetDiseasesReport = (reportedOrganisms: DiseasesReportInputOrganism[]):
     })
     .finally(() => {
       loading.value = false;
-    })
+    });
+  }
+
+  watch(reportedOrganismsRef, () => {
+    input.value = ({
+      items: reportedOrganismsRef.value.map((org) => ({ ...org, name: org.id })),
+    });
+    fetchReports();
+  });
 
   return {
     diseaseReports,

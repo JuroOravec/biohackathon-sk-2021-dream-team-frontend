@@ -224,7 +224,7 @@ const useCurrentUser = (): UseCurrentUser => {
   return {
     user,
     loading: isUserLoading,
-    isLoggedIn: readonly(isLoggedIn),
+    isLoggedIn: readonly(ref(true)),
     refetch: refetch as () => Promise<any>,
     deleteUser: doDeleteUser,
     deleteIntegrations: deleteUserIntegrations,
