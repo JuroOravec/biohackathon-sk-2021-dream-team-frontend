@@ -21,7 +21,7 @@ module.exports = {
       return args;
     });
     config.plugin('html').tap((args) => {
-      args[0].title = 'omnibiome';
+      args[0].title = 'OmniBio';
       return args;
     });
   },
