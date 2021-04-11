@@ -1,6 +1,6 @@
 import { inject } from '@vue/composition-api';
 import type { AnalyticsInstance } from 'analytics';
-import { asyncSafeInvoke } from '@biohackathon-sk-2021-dream-team/shared';
+import { asyncSafeInvoke } from '@omnibiome/shared';
 
 import { AnalyticsKey } from '../index';
 

@@ -41,7 +41,7 @@ const { provider: apolloProvider } = installApollo(Vue, currentConfig, {
   },
 });
 const analytics = installAnalytics(Vue, {
-  app: 'BioHackathon SK 2021 Dream Team',
+  app: 'OmniBiome',
   version: packageJson.version,
   debug: process.env.NODE_ENV === 'development',
   plugins: [

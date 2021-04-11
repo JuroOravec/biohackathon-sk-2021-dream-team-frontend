@@ -1,5 +1,5 @@
 {
-  "name": "@biohackathon-sk-2021-dream-team/web",
+  "name": "@omnibiome/web",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -21,7 +21,7 @@
   "dependencies": {
     "@analytics/mixpanel": "^0.3.1",
     "@apollo/client": "^3.3.7",
-    "@biohackathon-sk-2021-dream-team/shared": "^1.0.0",
+    "@omnibiome/shared": "^1.0.0",
     "@sentry/tracing": "^6.1.0",
     "@sentry/vue": "^6.1.0",
     "@types/handlebars": "^4.1.0",

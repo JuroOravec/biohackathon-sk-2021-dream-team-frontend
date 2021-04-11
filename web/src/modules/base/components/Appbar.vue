@@ -1,14 +1,13 @@
 <template>
   <v-app-bar
     app
-    dark
     flat
-    color="primary"
+    color="white"
     class="Appbar"
     :class="{ 'Appbar--expanded': expanded, 'Appbar--logged-in': isLoggedIn }"
   >
     <v-container class="py-0 fill-height">
-      <v-row class="fill-height" justify="space-between" align="center">
+      <v-row class="fill-height" :justify="$vuetify.breakpoint.xsOnly ? 'space-between' : undefined" align="center">
         <v-col
           cols="auto"
           class="Appbar__title fill-height"
@@ -16,12 +15,14 @@
         >
           <router-link to="/" class="fill-height">
             <v-app-bar-title class="title fill-height d-flex align-center">
-              BioHackathon SK 2021 Dream Team
+              <v-img src="../assets/omnibio-logo.png" contain :max-height="44" :max-width="150">
+                <div class="LoginAvatar__avatar-overlay transition-fast-in-fast-out" />
+              </v-img>
             </v-app-bar-title>
           </router-link>
         </v-col>
 
-        <v-spacer></v-spacer>
+        <v-spacer class="col-1" />
 
         <v-app-bar-nav-icon v-if="$vuetify.breakpoint.xsOnly" @click="setExpanded(!expanded)" />
 
@@ -32,21 +33,36 @@
         >
           <div
             v-for="link in links"
-            :key="'appbar-item-' + link.to.name"
+            :key="'appbar-item-' + link.title"
             class="Appbar__nav-item fill-height"
             :class="{ 'px-0': $vuetify.breakpoint.xsOnly }"
           >
             <router-link class="fill-height d-flex" :to="link.to">
-              <v-btn text class="fill-height">
+              <v-btn text class="fill-height px-2">
                 {{ link.title }}
               </v-btn>
             </router-link>
+          </div>
+        </v-col>
+
+          <v-spacer class="col-auto" />
+
+        <v-col>
+          <div
+            class="Appbar__nav-item fill-height d-flex"
+            :class="{ 'px-0': $vuetify.breakpoint.xsOnly, 'pl-4': !$vuetify.breakpoint.xsOnly }"
+          >
+            <v-icon class="fill-height d-flex" color="black">
+              shopping_cart
+            </v-icon>
           </div>
           <div
             class="Appbar__nav-item fill-height d-flex"
             :class="{ 'px-0': $vuetify.breakpoint.xsOnly, 'pl-4': !$vuetify.breakpoint.xsOnly }"
           >
-            <LoginMenu />
+            <v-icon class="fill-height d-flex" color="black">
+              account_circle
+            </v-icon>
           </div>
         </v-col>
       </v-row>
@@ -59,9 +75,7 @@ import { computed, defineComponent, getCurrentInstance, unref, watch } from '@vu
 import type { Location } from 'vue-router';
 
 import LoginMenu from '@/modules/auth/components/LoginMenu.vue';
-import { ProfileRoute } from '@/modules/profile/types';
 import { DashboardRoute } from '@/modules/dashboard/types';
-import { NewsRoute } from '@/modules/news/types';
 import useCurrentUser from '@/modules/auth/composables/useCurrentUser';
 import useRefRich from '@/modules/utils-reactivity/composables/useRefRich';
 
@@ -71,18 +85,23 @@ const appbarLinks: {
   requireAuth: boolean;
 }[] = [
   {
-    title: 'News',
-    to: { name: NewsRoute.ROOT },
+    title: 'Domov',
+    to: { name: DashboardRoute.ROOT },
     requireAuth: false,
   },
   {
-    title: 'Playlists',
+    title: 'Produkty',
+    to: { name: DashboardRoute.ROOT },
+    requireAuth: false,
+  },
+  {
+    title: 'Mikrobióm',
     to: { name: DashboardRoute.ROOT },
     requireAuth: true,
   },
   {
-    title: 'Profile',
-    to: { name: ProfileRoute.ROOT },
+    title: 'O nás',
+    to: { name: DashboardRoute.ROOT },
     requireAuth: true,
   },
 ];

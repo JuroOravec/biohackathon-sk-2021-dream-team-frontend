@@ -36,7 +36,7 @@ const previewContext = {
     ],
   },
   meta: {
-    app: 'BioHackathon SK 2021 Dream Team',
+    app: 'OmniBiome',
   },
 };
 

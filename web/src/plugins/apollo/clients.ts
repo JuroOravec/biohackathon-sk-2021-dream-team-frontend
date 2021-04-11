@@ -70,7 +70,7 @@ const createApolloClients = (
     link: ApolloLink.from([onErrorLink, serverHttpLink]),
     cache,
     defaultOptions,
-    name: 'BioHackathon SK 2021 Dream Team',
+    name: 'OmniBiome',
     assumeImmutableResults: true,
     credentials: 'include',
     connectToDevTools: true,

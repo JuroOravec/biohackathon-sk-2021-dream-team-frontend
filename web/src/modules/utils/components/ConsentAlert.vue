@@ -46,7 +46,7 @@ import noop from 'lodash/noop';
 
 import useRefRich from '@/modules/utils-reactivity/composables/useRefRich';
 import useAnalytics from '@/plugins/analytics/composables/useAnalytics';
-import { OptionalPromise } from '@biohackathon-sk-2021-dream-team/shared';
+import { OptionalPromise } from '@omnibiome/shared';
 
 interface ConsentPartner {
   id: string;
@@ -98,10 +98,10 @@ const ConsentAlert = defineComponent({
     const consentPartners = createConsentPartners();
 
     const storeConsent = (consentGiven: boolean) =>
-      localStorage.setItem('biohackathonsk2021dreamteam-consent', JSON.stringify(!!consentGiven));
+      localStorage.setItem('omnibiome-consent', JSON.stringify(!!consentGiven));
 
     const getConsent = (): any =>
-      JSON.parse(localStorage.getItem('biohackathonsk2021dreamteam-consent') ?? 'null');
+      JSON.parse(localStorage.getItem('omnibiome-consent') ?? 'null');
 
     const disableAll = async () => {
       setIsAlertActive(false);

@@ -43,7 +43,7 @@ const useOpenAuthWindow = (): UseOpenAuthWindow => {
     urlHelper.searchParams.set('redirect_url', config?.AUTH_CALLBACK_URL ?? '');
 
     openWindow(urlHelper.toString(), {
-      name: `biohackathonsk2021dreamteam-login-${providerId}`,
+      name: `omnibiome-${providerId}`,
       windowFeatures: defaultWindowFeats,
       onDidCloseWindow,
     });

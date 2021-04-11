@@ -1,13 +1,13 @@
 import type { GraphQLError } from 'graphql';
 import type { UseMutationReturn } from '@vue/apollo-composable';
 
-import type { OptionalReadonly } from '@biohackathon-sk-2021-dream-team/shared/src/types/optionals';
+import type { OptionalReadonly } from '@omnibiome/shared/src/types/optionals';
 import useNotifSnackbar, { TriggerOptions, NotifType, NotifData } from './useNotifSnackbar';
 
 type MutationNotif<
   T extends NotifData = NotifData,
   TArgs extends OptionalReadonly<any[]> = any[]
-> = TriggerOptions<T> | ((...args: TArgs) => TriggerOptions<T>) | false;
+  > = TriggerOptions<T> | ((...args: TArgs) => TriggerOptions<T>) | false;
 
 const getDefaultErrorNotif = (errors: OptionalReadonly<Error[]>): TriggerOptions => ({
   notifType: NotifType.ERROR,

@@ -1,7 +1,7 @@
 import type { ComponentOptions, VueConstructor } from 'vue';
 import { getCurrentInstance } from '@vue/composition-api';
 
-import { safeInvoke } from '@biohackathon-sk-2021-dream-team/shared';
+import { safeInvoke } from '@omnibiome/shared';
 
 const applyMixinOnce = (vueClass: VueConstructor, mixin: ComponentOptions<Vue>): void => {
   const appliedRoots = new Set<number>();

@@ -46,7 +46,7 @@
 import { computed, defineComponent, toRefs, unref, PropType } from '@vue/composition-api';
 import isNil from 'lodash/isNil';
 
-import unixTimestampToDate from '@biohackathon-sk-2021-dream-team/shared/src/utils/unixTimestampToDate';
+import unixTimestampToDate from '@omnibiome/shared/src/utils/unixTimestampToDate';
 import ProviderIcon from '@/modules/utils/components/ProviderIcon.vue';
 import DashboardCard from './DashboardCard.vue';
 import type { Playlist } from '../composables/usePlaylists';

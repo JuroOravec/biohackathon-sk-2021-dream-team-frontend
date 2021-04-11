@@ -1,5 +1,5 @@
 {
-  "name": "biohackathon-sk-2021-dream-team",
+  "name": "omnibiome",
   "private": true,
   "scripts": {
     "build:web": "npm ci --also=dev && npx lerna bootstrap && npx lerna run --scope \"*/web\" --scope \"*/shared\" build"

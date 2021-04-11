@@ -21,7 +21,7 @@ module.exports = {
       return args;
     });
     config.plugin('html').tap((args) => {
-      args[0].title = 'biohackathon-sk-2021-dream-team';
+      args[0].title = 'omnibiome';
       return args;
     });
   },

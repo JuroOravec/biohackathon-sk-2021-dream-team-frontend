@@ -67,7 +67,7 @@ import {
   getCurrentInstance,
 } from '@vue/composition-api';
 
-import validateTemplate from '@biohackathon-sk-2021-dream-team/shared/src/lib/TemplateFormatter/utils/validateTemplate';
+import validateTemplate from '@omnibiome/shared/src/lib/TemplateFormatter/utils/validateTemplate';
 import useListeners from '@/modules/utils/composables/useListeners';
 import pickPrefixed from '@/modules/utils/utils/pickPrefixed';
 import ProfileFormCheckbox from './ProfileFormCheckbox.vue';

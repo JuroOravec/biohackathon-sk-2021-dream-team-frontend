@@ -146,7 +146,7 @@
 <script lang="ts">
 import { defineComponent, unref, watch, computed } from '@vue/composition-api';
 
-import validateTemplate from '@biohackathon-sk-2021-dream-team/shared/src/lib/TemplateFormatter/utils/validateTemplate';
+import validateTemplate from '@omnibiome/shared/src/lib/TemplateFormatter/utils/validateTemplate';
 import useFormData from '@/modules/utils/composables/useFormData';
 import useValidators from '@/modules/utils/composables/useValidators';
 import ConfirmDialogGuard from '@/modules/utils/components/ConfirmDialogGuard.vue';
