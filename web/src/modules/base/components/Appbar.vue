@@ -52,7 +52,7 @@
             class="Appbar__nav-item fill-height d-flex"
             :class="{ 'px-0': $vuetify.breakpoint.xsOnly, 'pl-4': !$vuetify.breakpoint.xsOnly }"
           >
-            <v-icon class="fill-height d-flex" color="black">
+            <v-icon class="fill-height d-flex" color="primary">
               shopping_cart
             </v-icon>
           </div>
@@ -60,7 +60,7 @@
             class="Appbar__nav-item fill-height d-flex"
             :class="{ 'px-0': $vuetify.breakpoint.xsOnly, 'pl-4': !$vuetify.breakpoint.xsOnly }"
           >
-            <v-icon class="fill-height d-flex" color="black">
+            <v-icon class="fill-height d-flex" color="primary">
               account_circle
             </v-icon>
           </div>

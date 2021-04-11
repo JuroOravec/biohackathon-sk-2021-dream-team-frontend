@@ -6,10 +6,10 @@
     class="ConsentAlert elevation-5"
     v-on="$listeners"
   >
-    <v-card-title> This site uses third party services. </v-card-title>
+    <v-card-title> Táto stránka používa služby tretích strán. </v-card-title>
     <v-card-subtitle>
-      By allowing these third party services, you accept their cookies and the use of tracking
-      technologies necessary for their proper functioning.
+      Ak súhlasíte s využívaním týchto služieb, dané služby smú používať "cookies" a analytické technológie
+      potrebné na ich správne fungovanie.
     </v-card-subtitle>
     <v-card-text>
       <v-row>
@@ -26,12 +26,12 @@
         <v-spacer />
         <v-col class="col-auto">
           <v-btn color="primary" outlined @click="disableAll">
-            <slot name="cancel-text">Reject all</slot>
+            <slot name="cancel-text">Odmietnuť všetky</slot>
           </v-btn>
         </v-col>
         <v-col class="col-auto">
           <v-btn color="primary" @click="enableAll">
-            <slot name="confirm-text">Accept all</slot>
+            <slot name="confirm-text">Akceptovať všetky</slot>
           </v-btn>
         </v-col>
       </v-row>

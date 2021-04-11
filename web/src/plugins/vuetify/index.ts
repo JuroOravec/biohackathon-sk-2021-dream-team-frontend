@@ -10,6 +10,11 @@ const installVuetify = (vueClass: VueConstructor): Vuetify => {
       options: {
         customProperties: true,
       },
+      themes: {
+        light: {
+          primary: '#13547a',
+        },
+      },
     },
     icons: {
       iconfont: 'md',
