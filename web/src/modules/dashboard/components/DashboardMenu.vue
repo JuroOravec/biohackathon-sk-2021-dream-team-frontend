@@ -12,6 +12,12 @@ import { DashboardRoute } from '../types';
 const menuSections: (ListMenuSection & { to: { name: DashboardRoute } })[] = [
   {
     groupId: 'settings',
+    sectionId: DashboardRoute.OVERVIEW,
+    title: 'Prehľad',
+    to: { name: DashboardRoute.OVERVIEW },
+  },
+  {
+    groupId: 'settings',
     sectionId: DashboardRoute.CREATE_REPORT,
     title: 'Môj mikrobióm',
     to: { name: DashboardRoute.CREATE_REPORT },
