@@ -2,6 +2,7 @@ import type { Location } from 'vue-router';
 
 export enum BaseRoute {
   HOME = 'base:home',
+  MICROBIOME = 'base:microbiome',
   PRIVACY_POLICY = 'base:privacy-policy',
   UNKNOWN = 'base:unknown',
   ROOT = 'base:root',

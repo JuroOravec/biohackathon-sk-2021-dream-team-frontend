@@ -2,6 +2,7 @@ import type { RouteConfig } from 'vue-router';
 
 import { BaseRoute } from './types';
 import Home from './components/Home.vue';
+import Microbiome from './components/Microbiome.vue';
 import PrivacyPolicy from './components/PrivacyPolicy.vue';
 
 const createRoutes = (): RouteConfig[] => {
@@ -26,6 +27,16 @@ const createRoutes = (): RouteConfig[] => {
       path: '',
       components: {
         default: Home,
+      },
+      meta: {
+        requireAuth: false,
+      },
+    },
+    {
+      name: BaseRoute.MICROBIOME,
+      path: 'mikrobiom',
+      components: {
+        default: Microbiome,
       },
       meta: {
         requireAuth: false,

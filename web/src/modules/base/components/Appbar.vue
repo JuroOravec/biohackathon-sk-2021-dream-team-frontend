@@ -76,6 +76,7 @@ import type { Location } from 'vue-router';
 
 import LoginMenu from '@/modules/auth/components/LoginMenu.vue';
 import { DashboardRoute } from '@/modules/dashboard/types';
+import { BaseRoute } from '@/modules/base/types';
 import useCurrentUser from '@/modules/auth/composables/useCurrentUser';
 import useRefRich from '@/modules/utils-reactivity/composables/useRefRich';
 
@@ -86,7 +87,7 @@ const appbarLinks: {
 }[] = [
   {
     title: 'Domov',
-    to: { name: DashboardRoute.ROOT },
+    to: { name: BaseRoute.HOME },
     requireAuth: false,
   },
   {
@@ -96,7 +97,7 @@ const appbarLinks: {
   },
   {
     title: 'Mikrobióm',
-    to: { name: DashboardRoute.ROOT },
+    to: { name: BaseRoute.MICROBIOME },
     requireAuth: true,
   },
   {

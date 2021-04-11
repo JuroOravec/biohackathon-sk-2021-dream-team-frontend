@@ -1,8 +1,8 @@
 <template>
-  <div class="Home">
+  <div class="About">
     <v-img src="../assets/bg-banner-1.png" contain />
 
-    <v-row class="Home__cards">
+    <v-row class="About__cards">
       <v-col>
         <router-link :to="{ name: DashboardRoute.ROOT }">
           <Card>
@@ -74,8 +74,8 @@ import LightboxImg from '@/modules/utils/components/LightboxImg.vue';
 import Card from './Card.vue';
 import { DashboardRoute } from '../../dashboard/types';
 
-const Home = defineComponent({
-  name: 'Home',
+const About = defineComponent({
+  name: 'About',
   components: {
     LightboxImg,
     Card,
@@ -87,12 +87,12 @@ const Home = defineComponent({
   },
 });
 
-export default Home;
+export default About;
 </script>
 
 <style lang="scss">
 @import 'vuetify/src/styles/styles';
-.Home {
+.About {
   &__cards {
     padding-top: 100px;
     padding-bottom: 100px;

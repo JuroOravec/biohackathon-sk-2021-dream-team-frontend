@@ -20,7 +20,9 @@
         </v-row>
         <v-row>
           <v-col class="pt-2 pb-3">
-            Výskum mikrobiómu
+            <router-link :to="{ name: BaseRoute.MICROBIOME }">
+              Výskum mikrobiómu
+            </router-link>
           </v-col>
         </v-row>
       </v-col>
