@@ -1,4 +1,5 @@
-import { inject, isRef, Ref, ref, computed, watch } from '@vue/composition-api';
+import { inject, isRef, Ref, ref, watch } from '@vue/composition-api';
+import sortBy from 'lodash/sortBy';
 
 import { ConfigKey } from '@/plugins/config';
 import type { EnvironmentConfig } from '@/plugins/config/config';
@@ -32,16 +33,22 @@ interface DiseaseReportResponse {
     name: string;
     probability: number;
     hits: number;
-    publications: Publication[]
+    publications: Publication[];
+    meddra_id: number;
+    wiki_summary: string;
+    wiki_url: string;
   }[];
 }
 
-interface DiseaseReport {
+export interface DiseaseReport {
   diseaseId: Disease['id'];
   diseaseName: Disease['name'];
   probability: number;
   hits: number;
+  meddraId: number;
   publications: Publication[];
+  wikiSummary: string;
+  wikiUrl: string;
 }
 
 
@@ -61,6 +68,13 @@ const useGetDiseasesReport = (reportedOrganisms: OptionalRef<DiseasesReportInput
   const input: Ref<DiseasesReportInput> = ref({ items: [] });
 
   const fetchReports = () => {
+    if (!input.value?.items.length) {
+      diseaseReports.value = [];
+      loading.value = false;
+      error.value = null;
+      return;
+    }
+
     fetch(`${config!.BACKEND_URL}/organisms`, {
       method: 'POST',
       headers: {
@@ -71,15 +85,23 @@ const useGetDiseasesReport = (reportedOrganisms: OptionalRef<DiseasesReportInput
     })
     .then((response) => response.json())
     .then((data: DiseaseReportResponse) => {
-      diseaseReports.value = data.items.map((report): DiseaseReport => ({
-        diseaseId: report.id,
-        diseaseName: report.name,
-        probability: report.probability,
-        hits: report.hits,
-        publications: report.publications,
-      }));
+      diseaseReports.value = sortBy(
+        data.items.map((report): DiseaseReport => ({
+          diseaseId: report.id,
+          diseaseName: report.name,
+          probability: report.probability,
+          hits: report.hits,
+          publications: report.publications,
+          meddraId: report.meddra_id,
+          wikiSummary: report.wiki_summary,
+          wikiUrl: report.wiki_url,
+        })),
+        item => -1 * item.probability,
+      );
+      error.value = null;
     })
     .catch((err) => {
+      diseaseReports.value = [];
       error.value = err;
     })
     .finally(() => {
