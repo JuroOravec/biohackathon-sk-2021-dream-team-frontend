@@ -1,8 +1,8 @@
 import type { RouteConfig } from 'vue-router';
 
 import DashboardIntegrations from './components/ProfileIntegrations.vue';
-import DashboardAccount from './components/ProfileAccount.vue';
-import DashboardPreferences from './components/ProfilePreferences.vue';
+import DashboardAccount from './components/DashboardAccount.vue';
+import DashboardPreferences from './components/DashboardPreferences.vue';
 import { DashboardRoute } from './types';
 
 const createRoutes = (): (RouteConfig & { name: DashboardRoute })[] => [

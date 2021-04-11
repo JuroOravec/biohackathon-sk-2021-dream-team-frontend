@@ -7,9 +7,16 @@
     @confirm="onSubmit"
     @discard="onDiscard"
   >
-    <v-row class="ProfilePreferences">
+    <v-row class="DashboardPreferences">
       <v-col v-if="!diseaseReports.length">
         <ProfileCard>
+          <v-col class="col-12">
+            <v-img src="../assets/bg-1.png" :max-height="200">
+              <h3 class="text-h4 text-center white--text">
+                Údaje o mojom mikrobióme:
+              </h3>
+            </v-img>
+          </v-col>
           <v-col class="col-12 text-right">
             <v-tooltip left max-width="200">
               <template #activator="{ on, attrs }">
@@ -87,6 +94,14 @@
       </v-col>
 
       <v-col v-else>
+        <v-col class="col-12">
+          <v-img src="../assets/bg-1.png" :max-height="200">
+            <h3 class="text-h4 text-center white--text">
+              Riziko vzniku ochorenia:
+            </h3>
+          </v-img>
+        </v-col>
+
         <v-data-table
           :headers="reportHeaders"
           :items="diseaseReports"
@@ -217,8 +232,8 @@ const abundanceOptions: { text: string; value: Abundance }[] = [
   },
 ];
 
-const ProfilePreferences = defineComponent({
-  name: 'ProfilePreferences',
+const DashboardPreferences = defineComponent({
+  name: 'DashboardPreferences',
   components: {
     ProfileCard,
     ProfileFormCheckbox,
@@ -333,13 +348,19 @@ const ProfilePreferences = defineComponent({
   },
 });
 
-export default ProfilePreferences;
+export default DashboardPreferences;
 </script>
 
 <style lang="scss">
 @import '~vuetify/src/styles/main';
-.ProfilePreferences {
+.DashboardPreferences {
   min-width: 300px;
+
+  .v-responsive__content {
+    width: 100% !important;
+    height: 100% !important;
+    align-self: center;
+  }
 
   .ProfileFormCheckbox:nth-child(1) .v-input--checkbox {
     margin-top: 0 !important;
